@@ -64,7 +64,8 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface
      */
     public static function fromEnv()
     {
-        $path = getenv(self::ENV_VAR);
+        // $path = getenv(self::ENV_VAR);
+        $path = \Tenant::organization()->configuration('service_account_private_key_file');
         if (empty($path)) {
             return;
         }
