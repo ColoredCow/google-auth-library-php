@@ -2,7 +2,7 @@
   "name": "google/auth",
   "type": "library",
   "description": "Google Auth Library for PHP",
-  "keywords": ["google", "oauth2", "authentication"],
+  "keywords": ["google", "oauth2", "authentication", "coloredcow"],
   "homepage": "http://github.com/google/google-auth-library-php",
   "license": "Apache-2.0",
   "require": {
