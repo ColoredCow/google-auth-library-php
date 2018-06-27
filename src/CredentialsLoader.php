@@ -65,7 +65,7 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface
     public static function fromEnv()
     {
         // $path = getenv(self::ENV_VAR);
-        $path = \Tenant::organization()->configuration('service_account_private_key_file');
+        $path = \Tenant::organization()->getPrivateKeyFilePath();
         if (empty($path)) {
             return;
         }
@@ -169,8 +169,8 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface
                 $stack->push($middleware);
 
                 return new \GuzzleHttp\Client([
-                   'handler' => $stack,
-                   'auth' => 'google_auth',
+                    'handler' => $stack,
+                    'auth' => 'google_auth',
                 ] + $httpClientOptions);
             default:
                 throw new \Exception('Version not supported');
