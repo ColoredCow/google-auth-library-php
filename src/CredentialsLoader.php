@@ -64,8 +64,11 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface
      */
     public static function fromEnv()
     {
-        // $path = getenv(self::ENV_VAR);
-        $path = \Tenant::organization()->getPrivateKeyFilePath();
+        if (config('laravel-gsuite.multitenancy')) {
+            $path = config('laravel-gsuite.application-credentials');
+        } else {
+            $path = config('laravel-gsuite.application-credentials');
+        }
         if (empty($path)) {
             return;
         }
